@@ -1,0 +1,155 @@
+.footer {
+  display: block;
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footerContent {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px auto;
+  max-width: 1280px;
+}
+
+.footerCopyright {
+  color: var(--Blue, #13294e);
+  text-align: center;
+  
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  padding-bottom: 30px;
+}
+
+.navBar {
+  display: flex;
+  width: 512px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 8px;
+  color: rgb(0, 174, 255);
+  font-weight: bolder;
+}
+
+.navBar a {
+  color: var(--Blue, #13294e);
+  text-decoration: none;
+
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.footerLogin {
+  text-decoration: none;
+
+  display: flex;
+  width: 144px;
+  padding: 12px 46.67px 13px 46px;
+  justify-content: center;
+  align-items: flex-start;
+
+  border-radius: 20px;
+  border: 1px solid #2b33ff;
+  background: var(--Blue, #13294e);
+
+  color: #fff;
+  text-align: center;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footerLogo {
+  width: 144px;
+}
+
+.logoCard {
+  width: 200px;
+  display: flex;
+  max-width: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  margin: 0px 8px;
+}
+
+.logoCard img {
+  background-color: transparent;
+  height: 36px;
+  width: auto;
+}
+
+.logoCard .paragrahp {
+  margin-top: 8px;
+  background-color: rgb(255, 255, 255);
+  padding: 4px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 95%;
+  border: rgb(110, 110, 110) 1px solid;
+  box-shadow: 0px 1px 10px rgba(255, 255, 255, 0.2);
+}
+
+.logoCard .title {
+  margin-bottom: 0.5rem;
+  color: rgb(62, 105, 220);
+  font-weight: 600;
+  font-size: 0.75em;
+}
+
+.logoCard .description {
+  margin-bottom: 0.5rem;
+  color: rgb(118, 118, 118);
+  font-weight: 600;
+  font-size: 0.7em;
+}
+
+/* media query*/
+@media (max-width: 768px) {
+  .footer {
+    height: 120px;
+  }
+  .logoCard {
+    height: 60px;
+    min-width: 100px;
+    max-width: 120px;
+  }
+  .logoCard .paragrahp {
+    display: none;
+  }
+
+  .logoCard img {
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+  }
+
+  .navBar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-weight: 600;
+    font-size: 0.8em;
+    margin-right: 8px;
+  }
+
+  .navBar a {
+    margin: 0.2em 0.5em;
+    height: auto;
+  }
+}

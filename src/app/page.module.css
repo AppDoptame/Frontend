@@ -1,0 +1,20 @@
+.textCard {
+  padding: 50px 100px;
+}
+
+.textCardTitle {
+  color: var(--Blue, #13294e);
+  text-align: center;
+  font-size: 64px;
+  font-style: normal;
+  line-height: 86px;
+  letter-spacing: -4px;
+}
+
+.textCardDescription {
+  color: var(--blue-800, #212939);
+  text-align: justify;
+  font-style: normal;
+  line-height: 26px;
+  margin: 34px 0px;
+}

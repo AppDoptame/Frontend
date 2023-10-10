@@ -1,0 +1,60 @@
+.hero {
+  height: 656px;
+  width: 100%;
+}
+
+.hero .heroContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  max-width: 1280px;
+  margin: auto;
+}
+
+.heroButton {
+  display: block;
+  width: fit-content;
+  margin: auto;
+  text-decoration: none;
+  padding: 16px 24px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 8px;
+  background: var(--red, #ed1b24);
+
+  color: #fff;
+  text-align: center;
+
+  /* Semi-bold/18px */
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.heroTitle {
+  color: var(--Blue, #13294e);
+  text-align: center;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 86px;
+  letter-spacing: -4px;
+}
+
+.heroDescription {
+  color: var(--blue-800, #212939);
+  text-align: center;
+  
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 34px;
+
+  margin: 34px 0px;
+}

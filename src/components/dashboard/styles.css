@@ -1,0 +1,50 @@
+.container {
+  display: grid;
+  grid-template-columns: 300px 1fr; /* La primera columna tiene un ancho fijo de 200px, la segunda ocupa el espacio restante */
+  gap: 20px;
+}
+
+.content-dashboard {
+/* Segunda sombra */
+}
+
+
+.lateral-navigation {
+  height: calc(100vh - 80px);
+  padding: 30px 30px;
+  max-width: 375px;
+  background-color: #fafafb;
+  box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.dashboard-button{
+  display: flex;
+  max-width: 210px;
+  padding: 1rem 2.5rem;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--blue);
+  color: var(--white);
+  border-radius: 1rem;
+  margin: 0 auto;
+}
+
+.nav-button{
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  height: 45px;
+  text-align: left;
+}
+
+.dashboard-titles{
+  line-height: 18px;
+  font-size: 11px;
+  font-weight: medium;
+
+}

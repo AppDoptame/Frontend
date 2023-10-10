@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
+
+:root {
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+    --blue: #13294E;
+    --light-blue: #5B88D7;
+    --red: #ED1B24;
+    --green: #09e85e;
+    --white: #ffffff;
+    --black: #0e0e0e;
+    --grey: #858786;
+    --light-grey: #d9d9d9;
+    
+    --blue-gradient: linear-gradient(90deg, #13294E 0%, #5B88D7 100%);
+
+    --primary-text: #000000;
+    --secondary-text: var(--blue);
+    --tertiary-text: var(--red);
+  
+    --alert-text: var(--red);
+    --success-text: var(--green);
+  }
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+html {
+  font-size: 62.5%;
+
+  font-family: "Montserrat", sans-serif;
+  line-height: 1;
+}
+
+body {
+  background: var(--tertiary-color);
+  color: var(--primary-color);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button,
+a,
+li,
+blockquote,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.info  {
+  font-size: clamp(var(--min), var(--val), var(--max));
+  margin: 0;
+  padding: 0;
+}
+h1,
+.h1 {
+  --min: 3.725rem;
+  --val: 4.029999999999999vw;
+  --max: 6.8rem;
+}
+h2,
+.h2 {
+  --min: 2.6rem;
+  --val: 4.029999999999999vw;
+  --max: 3.725rem;
+}
+h3,
+.h3 {
+  --min: 2.05rem;
+  --val: 4.029999999999999vw;
+  --max: 2.6rem;
+}
+h4,
+.h4{
+  --min: 1.825rem;
+  --val: 4.029999999999999vw;
+  --max: 2.05rem;
+}
+h5,
+.h5 {
+  --min: 1.6rem;
+  --val: 4.029999999999999vw;
+  --max: 1.825rem
+}
+h6,
+.h6  {
+  --min: 1.4rem;
+  --val: 4.029999999999999vw;
+  --max: 1.6rem;
+}
+
+
+/* 24, 36, 54 */
+p,
+a,
+button,
+li {
+  --min: 1.2rem;
+  --val: 4.029999999999999vw;
+  --max: 1.8rem;
+  font-weight: medium;
+}
+a{
+  color: var(--black);
+  text-decoration: none;
+}
+
+blockquote{
+  --min: 1rem;
+  --val: 4.029999999999999vw;
+  --max: 2rem;
+  font-weight: medium;
+  color: #858786;
+}
+
+
+.flex{
+  display: flex;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+.flex-row{
+  flex-direction: row;
+}
+.justify-between{
+  justify-content: space-between;
+}
+
+.align-center{
+  align-items: center;
+}
+
+.gap-10{
+  gap: 1rem;
+}
+
+.gap-20{
+  gap: 2rem;
+}
+.gap-25{
+  gap: 2.5rem;
+}
+
+.mx-5{
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
