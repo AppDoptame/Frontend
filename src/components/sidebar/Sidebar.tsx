@@ -93,7 +93,7 @@ const Sidebar = () => {
               <FaHouse />
               <span>Home</span>
             </Link>
-            <Link href="/home">
+            <Link href="/pets">
               <FaDog />
               <span>Pets</span>
             </Link>

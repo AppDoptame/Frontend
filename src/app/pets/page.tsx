@@ -1,15 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import "./styles.css";
-
 import Sidebar from "@/components/sidebar/Sidebar";
 import TopBar from "@/components/topBar/TopBar";
 import BottomBar from "@/components/bottomBar/BottomBar";
-import ProfileSection from "@/components/profileSection/ProfileSection";
-import ProfilePets from "@/components/profilePets/ProfilePets";
+import AllPets from "@/components/allPets/ProfilePets";
 
-const Home = () => {
+const Pets = () => {
   return (
     <div className="page-dashboard">
       <aside className="pad">
@@ -19,8 +17,7 @@ const Home = () => {
         <TopBar />
       </header>
       <main className="pad">
-        <ProfileSection />
-        <ProfilePets email="a2@gmail.com" />
+        <AllPets />
       </main>
       <footer className="pad">
         <BottomBar />
@@ -29,4 +26,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Pets;
