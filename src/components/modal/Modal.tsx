@@ -1,20 +1,17 @@
-import React, { ReactNode, useState } from "react";
+import React, { useState } from "react";
 import "./styles.css";
-import Image from "next/image";
-import {
-  FaHouse,
-  FaUser,
-  FaMagnifyingGlass,
-  FaDog,
-  FaRightFromBracket,
-  FaGear,
-  FaBars,
-} from "react-icons/fa6";
-import Link from "next/link";
 
-const Sidebar = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [modalType, setModalType] = useState("");
+interface ModalProps {
+  showModal: boolean;
+  modalType: string;
+  closeModal: () => void;
+}
+
+const ModalComponent: React.FC<ModalProps> = ({
+  showModal,
+  modalType,
+  closeModal,
+}) => {
   const [formData, setFormData] = useState<{
     email: string;
     name: string;
@@ -28,16 +25,6 @@ const Sidebar = () => {
     vaccines: [],
     race: "",
   });
-
-  const openModal = (type: string) => {
-    setModalType(type);
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-    setModalType("");
-  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -69,50 +56,8 @@ const Sidebar = () => {
       }
     }
   };
-
   return (
     <>
-      <div className={`sidebar-container`}>
-        <div className="image-container">
-          <Image
-            src="/AppDoptame/logo_transparent_orange_long.png"
-            width={150}
-            height={55}
-            alt=""
-          />
-        </div>
-        <button className="button-34" onClick={() => openModal("pet")}>
-          Add Pet
-        </button>
-        <button className="button-34" onClick={() => openModal("post")}>
-          Add Post
-        </button>
-        <>
-          <div className="sidebar-ul-container">
-            <Link href="/home">
-              <FaHouse />
-              <span>Home</span>
-            </Link>
-            <Link href="/home">
-              <FaDog />
-              <span>Pets</span>
-            </Link>
-            <Link href="/home">
-              <FaMagnifyingGlass />
-              <span>Search</span>
-            </Link>
-            <Link href="/profile">
-              <FaUser />
-              <span>Profile</span>
-            </Link>
-          </div>
-
-          <div className="bottom-icons">
-            <FaRightFromBracket size={24} />
-            <FaGear size={24} />
-          </div>
-        </>
-      </div>
       {showModal && (
         <>
           <div className="modal-overlay" onClick={closeModal}></div>
@@ -176,6 +121,10 @@ const Sidebar = () => {
                     }
                   />
                 </label>
+                <label>
+                  Image:
+                  <input type="file" accept="image/*" />
+                </label>
                 <button className="submit-button" type="submit">
                   Submit
                 </button>
@@ -194,4 +143,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default ModalComponent;
