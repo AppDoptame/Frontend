@@ -61,7 +61,7 @@ const BottomBar = () => {
         <Link href="/home" className="nav-link">
           <FaHouse />
         </Link>
-        <Link href="/home" className="nav-link">
+        <Link href="/pets" className="nav-link">
           <FaDog />
         </Link>
         <div ref={plusIconRef} onClick={toggleButtons} className="nav-link">
