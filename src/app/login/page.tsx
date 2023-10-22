@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { useRouter } from "next/navigation"; // Importa el hook useRouter
+import { useRouter } from "next/navigation";
 import "./styles.css";
 
 export default function Login() {
@@ -49,7 +49,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "https://zlwzst2oc8.execute-api.us-east-1.amazonaws.com/sign-in",
+        "https://9o6udz5tvk.execute-api.us-east-1.amazonaws.com/sign-in",
         {
           method: "POST",
           headers: {
@@ -62,7 +62,7 @@ export default function Login() {
       const data = await response.json();
       if (response.ok) {
         console.log("logged in successfully");
-        router.push("/filesUpload");
+        router.push("/home");
       } else {
         console.error(data);
       }
@@ -98,7 +98,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "https://zlwzst2oc8.execute-api.us-east-1.amazonaws.com/sign-up",
+        "https://9o6udz5tvk.execute-api.us-east-1.amazonaws.com/sign-up",
         {
           method: "POST",
           headers: {
@@ -137,7 +137,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        "https://zlwzst2oc8.execute-api.us-east-1.amazonaws.com/confirm-sign-up",
+        " https://9o6udz5tvk.execute-api.us-east-1.amazonaws.com/confirm-sign-up",
         {
           method: "POST",
           headers: {
@@ -161,26 +161,73 @@ export default function Login() {
   };
 
   return (
-    <div
-      className={`container ${isSignUp ? "right-panel-active" : ""}`}
-      ref={containerRef}
-    >
-      <div className="form-container sign-up-container">
-        {showConfirmation ? (
-          <form action="#">
-            <h1>Confirmar Registro</h1>
-            <input
-              type="text"
-              placeholder="Código de Confirmación"
-              ref={confirmationCodeRef}
-            />
-            <button onClick={(event) => handleConfirmation(event)}>
-              Confirmar
-            </button>
-          </form>
-        ) : (
+    <div className="test">
+      <div
+        className={`container ${isSignUp ? "right-panel-active" : ""}`}
+        ref={containerRef}
+      >
+        <div className="form-container sign-up-container">
+          {showConfirmation ? (
+            <form action="#">
+              <h1>Confirmar Registro</h1>
+              <input
+                type="text"
+                placeholder="Código de Confirmación"
+                ref={confirmationCodeRef}
+              />
+              <button onClick={(event) => handleConfirmation(event)}>
+                Confirmar
+              </button>
+            </form>
+          ) : (
+            <form>
+              <h1>Crear Cuenta</h1>
+              {/* <div className="social-container">
+                <a href="#" className="social">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" className="social">
+                  <i className="fab fa-google-plus-g"></i>
+                </a>
+                <a href="#" className="social">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+              </div> */}
+              <span>o usa tu correo electrónico para registrarte</span>
+              <input type="text" placeholder="Nombre" ref={nameSignUpRef} />
+              <input
+                type="text"
+                placeholder="Correo electrónico"
+                ref={emailSignUpRef}
+              />
+              <input type="text" placeholder="Celular" ref={celularSignUpRef} />
+              <input type="text" placeholder="Ciudad" ref={ciudadSignUpRef} />
+              <input
+                type="text"
+                placeholder="Departamento"
+                ref={departamentoSignUpRef}
+              />
+              <input
+                type="text"
+                placeholder="Fecha de Nacimiento"
+                ref={fechaNacimientoSignUpRef}
+              />
+
+              <input
+                type="password"
+                placeholder="Contraseña"
+                ref={passwordSignUpRef}
+              />
+
+              <button onClick={(event) => handleRegistration(event)}>
+                Registrarse
+              </button>
+            </form>
+          )}
+        </div>
+        <div className="form-container sign-in-container">
           <form>
-            <h1>Crear Cuenta</h1>
+            <h1>Iniciar Sesión</h1>
             <div className="social-container">
               <a href="#" className="social">
                 <i className="fab fa-facebook-f"></i>
@@ -192,106 +239,61 @@ export default function Login() {
                 <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
-            <span>o usa tu correo electrónico para registrarte</span>
-            <input type="text" placeholder="Nombre" ref={nameSignUpRef} />
+            <span>o usa tu cuenta</span>
             <input
               type="text"
               placeholder="Correo electrónico"
-              ref={emailSignUpRef}
+              ref={emailSignInRef}
             />
-            <input type="text" placeholder="Celular" ref={celularSignUpRef} />
-            <input type="text" placeholder="Ciudad" ref={ciudadSignUpRef} />
-            <input
-              type="text"
-              placeholder="Departamento"
-              ref={departamentoSignUpRef}
-            />
-            <input
-              type="text"
-              placeholder="Fecha de Nacimiento"
-              ref={fechaNacimientoSignUpRef}
-            />
-
             <input
               type="password"
               placeholder="Contraseña"
-              ref={passwordSignUpRef}
+              ref={passwordSignInRef}
             />
 
-            <button onClick={(event) => handleRegistration(event)}>
-              Registrarse
-            </button>
-          </form>
-        )}
-      </div>
-      <div className="form-container sign-in-container">
-        <form>
-          <h1>Iniciar Sesión</h1>
-          <div className="social-container">
-            <a href="#" className="social">
-              <i className="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" className="social">
-              <i className="fab fa-google-plus-g"></i>
-            </a>
-            <a href="#" className="social">
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-          </div>
-          <span>o usa tu cuenta</span>
-          <input
-            type="text"
-            placeholder="Correo electrónico"
-            ref={emailSignInRef}
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            ref={passwordSignInRef}
-          />
-
-          <a href="#">¿Olvidaste tu contraseña?</a>
-          <button onClick={(event) => handleSignIn(event)}>
-            Iniciar Sesión
-          </button>
-        </form>
-      </div>
-      <div className="overlay-container">
-        <div className="overlay">
-          <div
-            className={`overlay-panel overlay-left ${
-              isSignUp ? "" : "right-panel-active"
-            }`}
-          >
-            <h2>¡Bienvenido de nuevo!</h2>
-            <p>
-              Para estar conectado con nosotros, inicia sesión con tu
-              información personal
-            </p>
-            <button
-              className="ghost"
-              ref={signInButtonRef}
-              onClick={handleSignInClick}
-            >
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            <button onClick={(event) => handleSignIn(event)}>
               Iniciar Sesión
             </button>
-          </div>
-          <div
-            className={`overlay-panel overlay-right ${
-              isSignUp ? "right-panel-active" : ""
-            }`}
-          >
-            <h2>¡Hola, Amigo!</h2>
-            <p>
-              Ingresa tus detalles personales y comienza tu viaje con nosotros
-            </p>
-            <button
-              className="ghost"
-              ref={signUpButtonRef}
-              onClick={handleSignUpClick}
+          </form>
+        </div>
+        <div className="overlay-container">
+          <div className="overlay">
+            <div
+              className={`overlay-panel overlay-left ${
+                isSignUp ? "" : "right-panel-active"
+              }`}
             >
-              Registrarse
-            </button>
+              <h2>¡Bienvenido de nuevo!</h2>
+              <p>
+                Para estar conectado con nosotros, inicia sesión con tu
+                información personal
+              </p>
+              <button
+                className="ghost"
+                ref={signInButtonRef}
+                onClick={handleSignInClick}
+              >
+                Iniciar Sesión
+              </button>
+            </div>
+            <div
+              className={`overlay-panel overlay-right ${
+                isSignUp ? "right-panel-active" : ""
+              }`}
+            >
+              <h2>¡Hola, Amigo!</h2>
+              <p>
+                Ingresa tus detalles personales y comienza tu viaje con nosotros
+              </p>
+              <button
+                className="ghost"
+                ref={signUpButtonRef}
+                onClick={handleSignUpClick}
+              >
+                Registrarse
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,7 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, useState } from "react";
 import Image from "next/image";
 
 import "./styles.css";
-import restock from "../../../public/logo-restock.svg";
 import mail from "../../../public/mail.svg";
 import bell from "../../../public/bell.svg";
 import circle from "../../../public/circle.svg";
@@ -12,12 +11,73 @@ interface DashboardProps {
 }
 
 export const Dashboard: React.FC<DashboardProps> = ({ children }) => {
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState("");
+  const [formData, setFormData] = useState<{
+    email: string;
+    name: string;
+    age: string;
+    vaccines: string[];
+    race: string;
+  }>({
+    email: "",
+    name: "",
+    age: "",
+    vaccines: [],
+    race: "",
+  });
+
+  const openModal = (type: string) => {
+    setModalType(type);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setModalType("");
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(
+        "https://9o6udz5tvk.execute-api.us-east-1.amazonaws.com/create-pet",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Pet added successfully");
+        closeModal();
+      } else {
+        alert("Error adding pet: " + data.message);
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        alert("There was an error: " + error.message);
+      } else {
+        alert("An unexpected error occurred");
+      }
+    }
+  };
+
   return (
     <section>
       <nav className="flex justify-between header-bar ">
         <div className="flex align-center gap-10">
-          <Image src={restock} width="50" height="40" alt="Restock Logo" />
-          <h3>Restock</h3>
+          <Image
+            src="/AppDoptame/logo_transparent_orange_long.png"
+            width={150}
+            height={55}
+            alt=""
+          />
         </div>
 
         <div className="flex align-center gap-20">
@@ -28,102 +88,92 @@ export const Dashboard: React.FC<DashboardProps> = ({ children }) => {
       </nav>
       <div className="container">
         <aside className="lateral-navigation">
-          <button className="dashboard-button">Dashboard</button>
-          <div>
-            <div style={{ marginBottom: "20px" }}>
-              <blockquote>ANALISIS</blockquote>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "1rem" }}
-              >
-                <Image
-                  src="/cursor-click.png"
-                  width="25"
-                  height="25"
-                  alt="Restock Logo"
-                />
-                <button className="nav-button">Chat Bot</button>
-              </div>
-            </div>
-            <div style={{ marginBottom: "20px" }}>
-              <blockquote>CUENTAS</blockquote>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "1rem" }}
-              >
-                <Image
-                  src="/user.png"
-                  width="25"
-                  height="25"
-                  alt="Restock Logo"
-                />
-                <button className="nav-button">Empleados</button>
-              </div>
-            </div>
-            <div style={{ marginBottom: "20px" }}>
-              <blockquote>INVENTARIO</blockquote>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "1rem" }}
-              >
-                <Image
-                  src="/folder.png"
-                  width="25"
-                  height="25"
-                  alt="Restock Logo"
-                />
-                <button className="nav-button">Archivos</button>
-              </div>
-
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "1rem" }}
-              >
-                <Image
-                  src="/bell.png"
-                  width="25"
-                  height="25"
-                  alt="Restock Logo"
-                />
-                <button className="nav-button">Alertas</button>
-              </div>
-
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "1rem" }}
-              >
-                <Image
-                  src="/chart-square-bar.png"
-                  width="25"
-                  height="25"
-                  alt="Restock Logo"
-                />
-                <button className="nav-button">Productos</button>
-              </div>
-            </div>
-            <div>
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "1rem" }}
-              >
-                <Image
-                  src="/cog.png"
-                  width="25"
-                  height="25"
-                  alt="Restock Logo"
-                />
-                <button className="nav-button">Configuracion</button>
-              </div>
-
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "1rem" }}
-              >
-                <Image
-                  src="/logout.png"
-                  width="25"
-                  height="25"
-                  alt="Restock Logo"
-                />
-                <button className="nav-button">Cerrar Sesion</button>
-              </div>
-            </div>
-          </div>
+          <button className="button-34" onClick={() => openModal("pet")}>
+            Add Pet
+          </button>
+          <button className="button-34" onClick={() => openModal("post")}>
+            Add Post
+          </button>
         </aside>
         <div className="content-dashboard">{children}</div>
+
+        {showModal && (
+          <>
+            <div className="modal-overlay" onClick={closeModal}></div>
+            <div className="modal">
+              <button className="close-button" onClick={closeModal}>
+                Close
+              </button>
+              {modalType === "pet" ? (
+                <form onSubmit={handleSubmit}>
+                  <label>
+                    Email:
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                    />
+                  </label>
+                  <label>
+                    Name:
+                    <input
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                    />
+                  </label>
+                  <label>
+                    Age:
+                    <input
+                      type="number"
+                      value={formData.age}
+                      onChange={(e) =>
+                        setFormData({ ...formData, age: e.target.value })
+                      }
+                    />
+                  </label>
+                  <label>
+                    Vaccines:
+                    <input
+                      type="text"
+                      value={formData.vaccines}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          vaccines: e.target.value.split(","),
+                        })
+                      }
+                      placeholder="Separate vaccines with commas"
+                    />
+                  </label>
+                  <label>
+                    Race:
+                    <input
+                      type="text"
+                      value={formData.race}
+                      onChange={(e) =>
+                        setFormData({ ...formData, race: e.target.value })
+                      }
+                    />
+                  </label>
+                  <button className="submit-button" type="submit">
+                    Submit
+                  </button>
+                </form>
+              ) : (
+                <div>
+                  {/* Post Form Goes Here */}
+                  <h2>Add Post Form</h2>
+                  {/* ... other form fields ... */}
+                </div>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
