@@ -10,21 +10,28 @@ const Header: React.FC = () => {
   const router = useRouter();
   const NavigateLogin = () => {
     router.push("/login");
-  }
+  };
 
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
-        <Link className={styles.headerLogo} href='/'>
-          <Image src='/repon/repon.svg' alt='Repon Logo' width={144} height={70} />
+        <Link className={styles.headerLogo} href="/">
+          <Image
+            src="/repon/repon.svg"
+            alt="Repon Logo"
+            width={144}
+            height={70}
+          />
         </Link>
         <nav className={styles.navBar}>
-          <Link href='/contacto'>Contáctenos</Link>
-          <Link href='/preguntas-frecuentes'>FAQ</Link>
-          <Link href='/precios'>Precios</Link>
-          <Link href='/soporte'>Soporte</Link>
+          <Link href="/contacto">Contáctenos</Link>
+          <Link href="/preguntas-frecuentes">FAQ</Link>
+          <Link href="/precios">Precios</Link>
+          <Link href="/soporte">Soporte</Link>
         </nav>
-        <button className={styles.headerLogin} onClick={()=>NavigateLogin()}>INGRESAR</button>
+        <button className={styles.headerLogin} onClick={() => NavigateLogin()}>
+          INGRESAR
+        </button>
       </div>
     </header>
   );

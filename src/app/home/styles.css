@@ -1,0 +1,10 @@
+.page-dashboard {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100px 1fr;
+  min-height: 100vh;
+}
+
+.pad {
+  padding: 1rem;
+}
