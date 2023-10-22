@@ -1,0 +1,23 @@
+.postSectionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  align-items: center;
+}
+
+/* Styles for medium-sized screens */
+@media (min-width: 769px) {
+  .postSectionContainer {
+    flex-direction: row; /* Display posts in a row */
+    flex-wrap: wrap; /* Allow posts to wrap to the next line */
+    justify-content: center; /* Center posts on medium screens */
+  }
+}
+
+/* Styles for small screens */
+@media (max-width: 480px) {
+  .postSectionContainer {
+    gap: 1rem; /* Reduce gap on smaller screens */
+  }
+}

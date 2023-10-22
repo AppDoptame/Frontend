@@ -8,14 +8,14 @@ const Hero: React.FC = () => {
       <div className={styles.heroContent}>
         <div className={styles.heroText}>
           <h1 className={styles.heroTitle}>
-            REPON SAS<br></br>
-            Transformando la Construcción
+            AppDoptame<br></br>
+            Transformando La Adopcion De Mascotas
           </h1>
           <p className={styles.heroDescription}>
-            Gestiona, controla y valoriza tus excedentes de obra. ¡Únete a la revolución colombiana
-            en construcción sostenible!
+            Descubre, conecta y adopta tu nuevo mejor amigo. ¡Únete a la
+            revolución colombiana de amor y cuidado animal con AppDoptaMe!
           </p>
-          <Link className={styles.heroButton} href='/contacto'>
+          <Link className={styles.heroButton} href="/contacto">
             Contáctenos
           </Link>
         </div>
