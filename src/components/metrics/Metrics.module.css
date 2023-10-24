@@ -1,13 +1,20 @@
-.metricsContainer{
+.MetricsContainer{
     text-align: center;
     margin: 0 auto; 
+    justify-content: center;
 }
 
-/* .logo {
-    font-size: 48px;
+.logo {
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background: var(--Blue, #13294E);
+    font-size: 10px;
+    width: 60px;
     color:#13294e;
-    margin-bottom: 24px;
-} */
+    margin-bottom: 35px;
+    margin-left: 64rem;
+}
 
 .textContainer {
     text-align: center;
@@ -17,16 +24,14 @@
     font-size: 24px;
     font-weight: bold;
     margin-top: 16px;
+    margin-bottom: 20px;
 }
 
 .subText{
     text-align: center;
     font-size: 18px;
     margin-top: 8px;
-}
-
-.spacer{
-    height: 14px;
+    margin-bottom: 7rem;
 }
 
 .cluster1{
@@ -39,7 +44,7 @@
     color:#ed1b24;
     font-size: 60px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 550;
     line-height: 72px;
     letter-spacing: -1.2px;
 }
@@ -67,6 +72,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 12.25rem;
     /* gap: 20px; */
 }
 

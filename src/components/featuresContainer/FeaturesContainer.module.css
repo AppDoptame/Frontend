@@ -1,0 +1,35 @@
+.container {
+    width: 1216px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 32px;
+    margin-bottom: 50rem;
+}
+
+.subHeading {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ed1b24;
+    margin: 5px;
+}
+
+.heading {
+    font-size: 36px;
+    font-weight: 600;
+    color: #13294e;
+    text-align: center;
+    margin: 16px 0;
+}
+
+.Text {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin-right: 190px;
+    margin-left: 190px;
+}

@@ -5,6 +5,7 @@ import Card from "@/components/card/Card";
 import Footer from "@/components/footer/Footer";
 import Container from "@/components/container/Container";
 import Metrics from "@/components/metrics/Metrics";
+import FeaturesContainer from "@/components/featuresContainer/FeaturesContainer";
 export default function Home() {
   return (
     <div>
@@ -45,6 +46,7 @@ export default function Home() {
         buttonDescription="En AppDoptaMe, creemos que cada mascota tiene una historia que merece ser contada. Descubre las conmovedoras trayectorias de rescate y recuperación de nuestras mascotas, y cómo han superado adversidades en su camino hacia un nuevo comienzo. Al compartir estas historias, esperamos crear una conexión emocional y fomentar una comunidad más empática y consciente."
         imagePosition="left"
       />
+      <FeaturesContainer />
       <Metrics />
       <Footer />
     </div>
