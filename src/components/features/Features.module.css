@@ -18,10 +18,10 @@
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    background: var(--Blue, #13294E);
+    background: var(--blue);
     font-size: 10px;
     width: 60px;
-    color:#13294e;
+    color:var(--blue);;
     margin-bottom: 35px;
     margin-left: 64rem;
 }
@@ -36,7 +36,7 @@
     font-size: 20px;
     font-weight: 500;
     line-height: 30px;
-    color: #13294E;
+    color: var(--blue);;
 }
 
 .text{

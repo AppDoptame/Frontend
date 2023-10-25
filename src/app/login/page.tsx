@@ -189,7 +189,7 @@ export default function Login() {
             </form>
           ) : (
             <form>
-              <h1>Crear Cuenta</h1>
+              <h2>Crear Cuenta</h2>
               {/* <div className="social-container">
                 <a href="#" className="social">
                   <i className="fab fa-facebook-f"></i>
@@ -235,18 +235,8 @@ export default function Login() {
         </div>
         <div className="form-container sign-in-container">
           <form>
-            <h1>Iniciar Sesión</h1>
-            <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            </div>
+            <h2>Iniciar Sesión</h2>
+
             <span>o usa tu cuenta</span>
             <input
               type="text"

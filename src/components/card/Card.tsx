@@ -15,9 +15,9 @@ const Card: FC<CardProps> = ({ imgSrc, cardTitle, buttonDescription, imagePositi
         <div className={styles.cardText}>
           <h2 className={styles.cardTitle}>{cardTitle}</h2>
           <hr />
-          <Link className={styles.cardButton + " " + poppins.className} href='/contacto'>
+          <p>
             {buttonDescription}
-          </Link>
+          </p>
         </div>
       </div>
     </div>

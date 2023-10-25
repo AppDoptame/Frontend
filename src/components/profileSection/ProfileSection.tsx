@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import { AuthContext } from "@/context";
 import "./styles.css";
 import Image from "next/image";
 
 type ProfileSectionProps = {};
 
 const ProfileSection: React.FC<ProfileSectionProps> = ({}) => {
+  const context = useContext(AuthContext);
+  {console.log(context.userData)}
   const [openSettings, setOpenSettings] = useState(false);
 
   return (
     <div className="">
       <div className="">
         <div className="">
-          <Image
-            src="https://vojislavd.com/ta-template-demo/assets/img/profile-background.jpg"
-            alt="Profile background"
-            width={1920}
-            height={385}
-          />
         </div>
         <div className="">
           <Image
@@ -25,9 +23,6 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({}) => {
             width={150}
             height={150}
           />
-
-          <p className="">name</p>
-          <p className="">description</p>
         </div>
       </div>
 
@@ -54,7 +49,7 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({}) => {
               </li>
               <li className="">
                 <span className="">Email:</span>
-                <span className="">amandaross@example.com</span>
+                <span className="">{context.userData.email}</span>
               </li>
               <li className="">
                 <span className="">Location:</span>

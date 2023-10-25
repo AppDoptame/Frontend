@@ -21,7 +21,7 @@
 .heading {
     font-size: 36px;
     font-weight: 600;
-    color: #13294e;
+    color: var(--blue);;
     text-align: center;
     margin: 16px 0;
 }
