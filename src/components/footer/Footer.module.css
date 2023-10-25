@@ -17,7 +17,7 @@
 }
 
 .footerCopyright {
-  color: var(--Blue, #13294e);
+  color: var(--blue);
   text-align: center;
   
   font-size: 14px;
@@ -39,10 +39,8 @@
 }
 
 .navBar a {
-  color: var(--Blue, #13294e);
+  color: var(--blue);
   text-decoration: none;
-
-  font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
@@ -59,12 +57,11 @@
   align-items: flex-start;
 
   border-radius: 20px;
-  border: 1px solid #2b33ff;
-  background: var(--Blue, #13294e);
+  border: 1px solid var(--blue);
+  background: var(--blue);
 
   color: #fff;
   text-align: center;
-  font-family: Inter;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
@@ -107,7 +104,7 @@
 
 .logoCard .title {
   margin-bottom: 0.5rem;
-  color: rgb(62, 105, 220);
+  color: var(--blue);
   font-weight: 600;
   font-size: 0.75em;
 }

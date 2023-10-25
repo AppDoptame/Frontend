@@ -10,16 +10,21 @@ const Footer: React.FC = () => {
     <div className={styles.footer}>
       <hr />
       <div className={styles.footerContent}>
-        <Link className={styles.footerLogo} href='/'>
-          <Image src='/repon/repon.svg' alt='Repon Logo' width={144} height={70} />
+        <Link className={styles.footerLogo} href="/">
+          <Image
+            src="/AppDoptame/logo_transparent_orange_long.png"
+            width={150}
+            height={55}
+            alt=""
+          />
         </Link>
         <nav className={styles.navBar}>
-          <Link href='/contacto'>Contáctenos</Link>
-          <Link href='/preguntas-frecuentes'>FAQ</Link>
-          <Link href='/precios'>Precios</Link>
-          <Link href='/soporte'>Soporte</Link>
+          <Link href="/contacto">Contáctenos</Link>
+          <Link href="/preguntas-frecuentes">FAQ</Link>
+          <Link href="/precios">Precios</Link>
+          <Link href="/soporte">Soporte</Link>
         </nav>
-        <Link className={styles.footerLogin} href='/login'>
+        <Link className={styles.footerLogin} href="/login">
           INGRESAR
         </Link>
       </div>
