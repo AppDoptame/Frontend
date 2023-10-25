@@ -22,6 +22,8 @@ const ModalComponent: React.FC<ModalProps> = ({
     sex: "M" | "F";
     size: "XS" | "S" | "M" | "L" | "XL";
     sterilized: "true" | "false";
+    title: string;
+    description: string;
   }>({
     email: "",
     name: "",
@@ -32,6 +34,8 @@ const ModalComponent: React.FC<ModalProps> = ({
     sex: "M",
     size: "M",
     sterilized: "false",
+    title: "",
+    description: "",
   });
 
   const [postFormData, setPostFormData] = useState<{
@@ -84,9 +88,38 @@ const ModalComponent: React.FC<ModalProps> = ({
     };
   };
 
-  const handlePostSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  // const handlePostSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
 
+  //   try {
+  //     const response = await fetch(
+  //       "https://9o6udz5tvk.execute-api.us-east-1.amazonaws.com/create-post",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ ...postFormData, images: [uploadedImage] }),
+  //       }
+  //     );
+
+  //     const data = await response.json();
+  //     if (response.ok) {
+  //       alert("Post created successfully");
+  //       closeModal();
+  //     } else {
+  //       alert("Error creating post: " + data.message);
+  //     }
+  //   } catch (error) {
+  //     if (error instanceof Error) {
+  //       alert("There was an error: " + error.message);
+  //     } else {
+  //       alert("An unexpected error occurred");
+  //     }
+  //   }
+  // };
+
+  const submitPost = async (formData: any) => {
     try {
       const response = await fetch(
         "https://9o6udz5tvk.execute-api.us-east-1.amazonaws.com/create-post",
@@ -95,16 +128,17 @@ const ModalComponent: React.FC<ModalProps> = ({
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ ...postFormData, images: [uploadedImage] }),
+          body: JSON.stringify(formData),
         }
       );
 
       const data = await response.json();
       if (response.ok) {
         alert("Post created successfully");
-        closeModal();
+        return true;
       } else {
         alert("Error creating post: " + data.message);
+        return false;
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -112,7 +146,17 @@ const ModalComponent: React.FC<ModalProps> = ({
       } else {
         alert("An unexpected error occurred");
       }
+      return false;
     }
+  };
+
+  const handlePostSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const success = await submitPost({
+      ...postFormData,
+      images: [uploadedImage],
+    });
+    if (success) closeModal();
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -138,8 +182,15 @@ const ModalComponent: React.FC<ModalProps> = ({
       const data = await response.json();
       if (response.ok) {
         alert("Pet added successfully");
-        console.log(data);
-        closeModal();
+        // Now, submit the post for this pet
+        const postSuccess = await submitPost({
+          title: formData.title,
+          description: formData.description,
+          email: formData.email,
+          pet_id: data.id, // Assuming the API returns the pet's ID in a field called 'id'
+          images: [uploadedImage],
+        });
+        if (postSuccess) closeModal();
       } else {
         console.log(data);
         alert("Error adding pet: " + data.message);
@@ -273,6 +324,26 @@ const ModalComponent: React.FC<ModalProps> = ({
                     <option value="true">True</option>
                     <option value="false">False</option>
                   </select>
+                </label>
+                <label>
+                  Title:
+                  <input
+                    type="text"
+                    value={formData.title}
+                    onChange={(e) =>
+                      setFormData({ ...formData, title: e.target.value })
+                    }
+                  />
+                </label>
+                <label>
+                  Description:
+                  <input
+                    type="text"
+                    value={formData.description}
+                    onChange={(e) =>
+                      setFormData({ ...formData, description: e.target.value })
+                    }
+                  />
                 </label>
                 <button className="submit-button" type="submit">
                   Submit
