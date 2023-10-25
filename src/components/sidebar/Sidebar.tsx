@@ -84,16 +84,16 @@ const Sidebar = () => {
         <button className="button-34" onClick={() => openModal("pet")}>
           Add Pet
         </button>
-        <button className="button-34" onClick={() => openModal("post")}>
+        {/* <button className="button-34" onClick={() => openModal("post")}>
           Add Post
-        </button>
+        </button> */}
         <>
           <div className="sidebar-ul-container">
             <Link href="/home">
               <FaHouse />
               <span>Home</span>
             </Link>
-            <Link href="/home">
+            <Link href="/pets">
               <FaDog />
               <span>Pets</span>
             </Link>

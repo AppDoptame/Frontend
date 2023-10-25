@@ -5,7 +5,7 @@ import "./styles.css";
 type PostData = {
   title: string;
   description: string;
-  imageUrl: string;
+  images: string;
 };
 
 type PostSectionProps = {
@@ -20,7 +20,7 @@ const PostSection: React.FC<PostSectionProps> = ({ posts }) => {
           key={index}
           title={post.title}
           description={post.description}
-          imageUrl={post.imageUrl}
+          images={post.images[0]}
         />
       ))}
     </div>

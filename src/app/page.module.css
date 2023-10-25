@@ -3,7 +3,7 @@
 }
 
 .textCardTitle {
-  color: var(--Blue, #13294e);
+  color: var(--blue);
   text-align: center;
   font-size: 64px;
   font-style: normal;
@@ -13,7 +13,7 @@
 }
 
 .textCardDescription {
-  color: var(--blue-800, #212939);
+  color: var(--blue);
   text-align: justify;
   font-style: normal;
   line-height: 26px;

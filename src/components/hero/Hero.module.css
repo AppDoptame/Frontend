@@ -25,7 +25,7 @@
   gap: 10px;
 
   border-radius: 8px;
-  background: var(--red, #ed1b24);
+  background: var(--orange);
 
   color: #fff;
   text-align: center;
@@ -38,7 +38,7 @@
 }
 
 .heroTitle {
-  color: var(--Blue, #13294e);
+  color: var(--blue);
   text-align: center;
   font-size: 64px;
   font-style: normal;
@@ -48,7 +48,7 @@
 }
 
 .heroDescription {
-  color: var(--blue-800, #212939);
+  color: var(--blue);
   text-align: center;
   
   font-size: 21px;

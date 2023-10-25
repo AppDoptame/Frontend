@@ -17,10 +17,10 @@ const Header: React.FC = () => {
       <div className={styles.headerContent}>
         <Link className={styles.headerLogo} href="/">
           <Image
-            src="/AppDoptame/logo_ligthblue.png"
-            alt="logo_lightblue"
-            width={144}
-            height={80}
+            src="/AppDoptame/logo_transparent_orange_long.png"
+            width={150}
+            height={55}
+            alt=""
           />
         </Link>
         <nav className={styles.navBar}>

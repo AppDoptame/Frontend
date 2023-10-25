@@ -5,23 +5,24 @@ import Image from "next/image";
 type PostCardProps = {
   title: string;
   description: string;
-  imageUrl: string;
+  images: string;
 };
 
 const PostCard: React.FC<PostCardProps> = ({
   title,
   description,
-  imageUrl,
+  images,
 }) => {
+  {console.log(images)}
   return (
     <div className="postCardContainer">
       <div className="postCardImage">
-        <Image
-          src={imageUrl}
+        <img
+          src={images}
           alt={title}
           width={300}
           height={300}
-          objectFit="cover"
+          // objectFit="cover"
         />
       </div>
       <div className="postCardContent">
