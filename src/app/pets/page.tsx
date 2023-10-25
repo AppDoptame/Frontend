@@ -8,6 +8,7 @@ import BottomBar from "@/components/bottomBar/BottomBar";
 import AllPets from "@/components/allPets/ProfilePets";
 
 const Pets = () => {
+
   return (
     <div className="page-dashboard">
       <aside className="pad">

@@ -1,10 +1,16 @@
 "use client";
 
+import { useContext } from "react";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./styles.css";
 
+import { AuthContext } from "@/context";
+
 export default function Login() {
+
+  const context = useContext(AuthContext);
+  console.log(context.userData);
   const signUpButtonRef = useRef<HTMLButtonElement | null>(null);
   const signInButtonRef = useRef<HTMLButtonElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -62,6 +68,8 @@ export default function Login() {
       const data = await response.json();
       if (response.ok) {
         console.log("logged in successfully");
+        context.userData.email= email
+        context.userData.logged= true;
         router.push("/home");
       } else {
         console.error(data);
