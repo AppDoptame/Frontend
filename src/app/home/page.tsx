@@ -10,6 +10,8 @@ import Sidebar from "@/components/sidebar/Sidebar";
 import TopBar from "@/components/topBar/TopBar";
 import BottomBar from "@/components/bottomBar/BottomBar";
 import PostSection from "@/components/postCardSection/PostCardSection";
+import PostCardFeature from "@/components/CardFeatures/CardFeature";
+import { FaEnvelope } from "react-icons/fa6";
 
 const samplePosts = [
   {

@@ -11,9 +11,11 @@
     background: var(--blue);
     font-size: 10px;
     width: 60px;
-    color:var(--blue);;
-    margin-bottom: 35px;
-    margin-left: 64rem;
+    color:#13294e;
+    margin:auto; 
+    color:var(--blue);
+    margin:auto;
+    margin-bottom: 5rem;
 }
 
 .textContainer {

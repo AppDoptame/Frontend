@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Metrics.module.css";
-import { BsFillClipboard2DataFill } from "react-icons/bs";
 
 
 const Metrics = () => {
