@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./styles.css";
 
+import PetCard from "../petCard/PetCard";
+
 type Pet = {
   id: string;
   name: string;
@@ -10,8 +12,8 @@ type Pet = {
   size: string;
   city: string;
   department: string;
-  sterilized: string;
-  adopted: string;
+  sterilized: boolean;
+  adopted: boolean;
   images: string[];
   vaccines: string[];
   email: string;
@@ -59,19 +61,33 @@ const AllPets: React.FC = () => {
 
   return (
     <div>
-      {pets.map((pet) => (
-        <div key={pet.id}>
-          <h3>{pet.name}</h3>
-          <p>Race: {pet.race}</p>
-          <p>Age: {pet.age}</p>
-          <p>Sex: {pet.sex}</p>
-          <p>Size: {pet.size}</p>
-          <p>City: {pet.city}</p>
-          <p>Department: {pet.department}</p>
-          <p>Sterilized: {pet.sterilized}</p>
-          <p>Adopted: {pet.adopted}</p>
-          <p>Email: {pet.email}</p>
-        </div>
+      {pets.map((pet, index) => (
+        <PetCard
+          key={index}
+          name={pet.name}
+          vaccines={pet.vaccines}
+          images={pet.images[0]}
+          race={pet.race}
+          age={pet.age}
+          sex={pet.sex}
+          city={pet.city}
+          department={pet.department}
+          sterilized={pet.sterilized}
+          adopted={pet.adopted}
+          email={pet.email}
+          />
+        // <div key={pet.id}>
+        //   <h3>{pet.name}</h3>
+        //   <p>Race: {pet.race}</p>
+        //   <p>Age: {pet.age}</p>
+        //   <p>Sex: {pet.sex}</p>
+        //   <p>Size: {pet.size}</p>
+        //   <p>City: {pet.city}</p>
+        //   <p>Department: {pet.department}</p>
+        //   <p>Sterilized: {pet.sterilized}</p>
+        //   <p>Adopted: {pet.adopted}</p>
+        //   <p>Email: {pet.email}</p>
+        // </div>
       ))}
     </div>
   );

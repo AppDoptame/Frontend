@@ -1,14 +1,13 @@
 .postCardContainer {
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-
-  width: 100%;
-  max-width: 310px;
+  box-shadow: 0 4px 15px rgba(48, 47, 47, 0.1);
+  width: max-content;
   cursor: pointer;
-  margin: auto;
   background-color: #fff;
-  min-width: 300px;
+  width: 80%;
+  display: flex;
+  margin: 2rem auto;
 }
 
 .postCardContainer:hover {
@@ -18,7 +17,7 @@
 
 .postCardImage img {
   width: 310px;
-  height: 310px;
+  height: 380px;
   display: block;
   object-fit: cover; /* Esto mantiene la proporción de aspecto y cubre el cuadro sin distorsión */
 }
@@ -44,11 +43,11 @@
 
 }
 
-@media (min-width: 769px) {
+/* @media (min-width: 769px) {
   .postCardContainer {
     width: 340px;
   }
-}
+} */
 
 @media (max-width: 480px) {
   .postCardContent {

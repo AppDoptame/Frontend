@@ -1,9 +1,10 @@
 .postSectionContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
-
   align-items: center;
+  max-width: 1280px;
+  margin: 5rem auto;
 }
 
 /* Styles for medium-sized screens */
@@ -18,6 +19,8 @@
 /* Styles for small screens */
 @media (max-width: 480px) {
   .postSectionContainer {
+    grid-template-columns:1fr;
+
     gap: 1rem; /* Reduce gap on smaller screens */
   }
 }
