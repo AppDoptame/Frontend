@@ -15,7 +15,7 @@ const Pets = () => {
         <Sidebar />
       </aside>
       <header className="pad">
-        <TopBar />
+        {/* <TopBar /> */}
       </header>
       <main className="pad">
         <AllPets />

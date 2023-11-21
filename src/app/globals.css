@@ -6,7 +6,7 @@
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-    --orange: #f35600;
+    --orange: #d96e37;
     --blue: #0086d8;
     --light-blue: #5B88D7;
     --red: #ED1B24;
@@ -30,6 +30,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 html,

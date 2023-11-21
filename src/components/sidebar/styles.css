@@ -1,34 +1,42 @@
 .sidebar-container {
-  width: 200px;
+  width: 32rem;
   background-color: #f9f9f9;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: "Poppins", sans-serif;
   color: #333;
   position: sticky;
   top: 0;
 }
 
 .image-container {
-  margin-top: 20px;
-  margin-bottom: 40px;
-  border-bottom: 1px solid #e0e0e0;
+  width: 200px;
+  /* height: 55px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
 }
+
+.image-container img {
+  object-fit: contain; /* Puedes usar 'cover' si prefieres cubrir completamente el contenedor */
+  width: 100%;
+  height: 100%;
+}
+
 .sidebar-ul-container {
   width: 100%;
-  padding: 0;
-  margin: 0;
-  margin-left: 5rem;
-  margin-top: 1rem;
+  padding: 1.2rem;
+  margin: 4px 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 
-.sidebar-ul-container Link {
+.sidebar-ul-container a,
+.sidebar-ul-container button {
   display: flex;
   align-items: center;
   padding: 15px 25px;
@@ -37,14 +45,21 @@
   font-weight: 500;
 }
 
-li:hover {
-  background-color: #e5e5e5;
+.sidebar-ul-container button {
+  background-color: #f9f9f9;
+  border: 0;
   cursor: pointer;
 }
 
-li span {
-  margin-left: 10px;
-  letter-spacing: 0.5px;
+.sidebar-ul-container a span,
+.sidebar-ul-container button span{
+  padding: 0 0 0 1.6rem;
+}
+
+a:hover,
+button:hover {
+  background-color: #e5e5e5;
+  cursor: pointer;
 }
 
 .bottom-icons {

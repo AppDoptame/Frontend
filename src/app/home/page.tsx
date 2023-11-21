@@ -63,7 +63,7 @@ const Home = () => {
         <Sidebar />
       </aside>
       <header className="pad">
-        <TopBar />
+        {/* <TopBar /> */}
       </header>
       <main className="pad">
         <PostSection posts={posts} />

@@ -9,6 +9,7 @@ import {
   FaRightFromBracket,
   FaGear,
   FaBars,
+  FaPlus,
 } from "react-icons/fa6";
 import Link from "next/link";
 
@@ -81,28 +82,29 @@ const Sidebar = () => {
             alt=""
           />
         </div>
-        <button className="button-34" onClick={() => openModal("pet")}>
-          Add Pet
-        </button>
         {/* <button className="button-34" onClick={() => openModal("post")}>
           Add Post
         </button> */}
         <>
           <div className="sidebar-ul-container">
             <Link href="/home">
-              <FaHouse />
+              <FaHouse style={{ fontSize: '3rem', color: "var(--orange)" }}/>
               <span>Home</span>
             </Link>
             <Link href="/pets">
-              <FaDog />
+              <FaDog style={{ fontSize: '3rem', color: "var(--orange)" }}/>
               <span>Pets</span>
             </Link>
+            <button className="" onClick={() => openModal("pet")}>
+              <FaPlus style={{ fontSize: '3rem', color: "var(--orange)" }}/>
+              <span>Add Pet</span>
+            </button>
             <Link href="/home">
-              <FaMagnifyingGlass />
+              <FaMagnifyingGlass style={{ fontSize: '3rem', color: "var(--orange)" }}/>
               <span>Search</span>
             </Link>
             <Link href="/profile">
-              <FaUser />
+              <FaUser style={{ fontSize: '3rem', color: "var(--orange)" }}/>
               <span>Profile</span>
             </Link>
           </div>
