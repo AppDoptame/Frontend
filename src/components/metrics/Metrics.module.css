@@ -26,7 +26,6 @@
     font-size: 24px;
     font-weight: bold;
     margin-top: 16px;
-    margin-bottom: 20px;
 }
 
 .subText{
@@ -42,66 +41,32 @@
     gap: 100px
 }
 
-.Text1{
-    color:#ed1b24;
+.Text{
+    color: var(--orange);
     font-size: 60px;
-    font-style: normal;
     font-weight: 550;
-    line-height: 72px;
-    letter-spacing: -1.2px;
 }
 
 .Text2{
     color:var(--blue);;
     font-size: 60px;
-    font-style: normal;
     font-weight: 600;
-    line-height: 72px;
-    letter-spacing: -1.2px;
 }
 
-.Text3{
-    color:#ed1b24;
-    font-size: 60px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 72px;
-    letter-spacing: -1.2px;
-}
-
-.cluster2{
+.info_container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 12.25rem;
+    margin-bottom: 10rem;
     /* gap: 20px; */
 }
 
-.subText1{
-    align-self: stretch;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 28px;
-    padding-left: 50px;
-}
 
-.subText2{
-    align-self: stretch;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 28px;
-    padding-right: 30px;
-    padding-left: 90px;
-}
-
-.subText3{
-    align-self: stretch;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 28px;
-    padding-left: 50px;
+.metrics_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
 }

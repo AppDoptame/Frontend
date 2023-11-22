@@ -5,9 +5,9 @@ import Image from "next/image";
 const Container: React.FC = () => {
     return (
         <div className={styles.Container}>
-            <div className={styles.containerText}>
+            {/* <div className={styles.containerText}>
                 <p>Join 4,000 + companies already growing.</p>
-            </div>
+            </div> */}
             <div className={styles.ContainerLogos}>
                 <Image src="/AppDoptame/container/logodanino.png" alt="logodanino" width={150} height={100} />
                 <Image src="/AppDoptame/container/logokanu.png" alt="logokanu" width={150} height={130} />

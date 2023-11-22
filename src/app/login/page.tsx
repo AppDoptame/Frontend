@@ -1,20 +1,24 @@
 "use client";
 
 import { useContext } from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import "./styles.css";
 
 import { AuthContext } from "@/context";
 
 export default function Login() {
-
   const context = useContext(AuthContext);
-  console.log(context.userData);
+  // console.log(context.userData)
+
   const signUpButtonRef = useRef<HTMLButtonElement | null>(null);
   const signInButtonRef = useRef<HTMLButtonElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [loginError, setLoginError] = useState("");
+
   const router = useRouter();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -31,6 +35,14 @@ export default function Login() {
 
   const confirmationCodeRef = useRef<HTMLInputElement>(null);
   const [registrationEmail, setRegistrationEmail] = useState("");
+
+  useEffect(() => {
+    // Verifica si el usuario no está autenticado (logged es falso)
+    if (context.userData.logged) {
+      // Redirige al usuario a la página de inicio de sesión
+      router.push('/home'); // Ajusta la ruta según la configuración de tu aplicación
+    }
+  }, [context.userData.logged, router]);
 
   const handleSignUpClick = () => {
     containerRef?.current?.classList.add("right-panel-active");
@@ -67,11 +79,25 @@ export default function Login() {
 
       const data = await response.json();
       if (response.ok) {
+        setLoginError("")
         console.log("logged in successfully");
-        context.userData.email= email
-        context.userData.logged= true;
+        context.userData.email = email;
+        context.userData.logged = true;
+        context.userData.access_token = data.access_token;
+        context.userData.refresh_token = data.refresh_token;
+        context.userData.nombre = data.nombre;
+        context.userData.fecha_nacimiento = data.fecha_nacimiento;
+        context.userData.ciudad = data.ciudad;
+        context.userData.departamento = data.departamento;
+        context.userData.celular = data.celular;
+
+        console.log(context.userData)
         router.push("/home");
-      } else {
+      }else if (response.status === 400) {
+        // Manejar el error 400 (Bad Request)
+        setLoginError("El correo o la contraseña son invalidos")
+        console.log(loginError)
+      }  else {
         console.error(data);
       }
     } catch (error) {
@@ -90,6 +116,25 @@ export default function Login() {
     const ciudad = ciudadSignUpRef.current?.value || "";
     const departamento = departamentoSignUpRef.current?.value || "";
     const fechaNacimiento = fechaNacimientoSignUpRef.current?.value || "";
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Por favor, ingresa un correo electrónico válido.");
+      return;
+    } else {
+      setEmailError("");
+    }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(.{6,})$/;
+
+    if (!passwordRegex.test(password)) {
+      setPasswordError(
+        "La contraseña debe contener al menos una mayúscula, un carácter especial y tener una longitud mínima de 6 caracteres."
+      );
+      return;
+    } else {
+      setPasswordError("");
+    }
 
     const payload = {
       nombre: name,
@@ -118,6 +163,7 @@ export default function Login() {
 
       const data = await response.json();
       if (response.ok) {
+        
         console.log(data);
         setShowConfirmation(true);
       } else {
@@ -160,7 +206,7 @@ export default function Login() {
         setShowConfirmation(false);
         console.log(data);
         console.log("confirmed");
-      } else {
+      }else {
         console.error(data);
       }
     } catch (error) {
@@ -190,24 +236,14 @@ export default function Login() {
           ) : (
             <form>
               <h2>Crear Cuenta</h2>
-              {/* <div className="social-container">
-                <a href="#" className="social">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" className="social">
-                  <i className="fab fa-google-plus-g"></i>
-                </a>
-                <a href="#" className="social">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-              </div> */}
-              <span>o usa tu correo electrónico para registrarte</span>
+
               <input type="text" placeholder="Nombre" ref={nameSignUpRef} />
               <input
                 type="text"
                 placeholder="Correo electrónico"
                 ref={emailSignUpRef}
               />
+              {emailError && <p className="error-message">{emailError}</p>}
               <input type="text" placeholder="Celular" ref={celularSignUpRef} />
               <input type="text" placeholder="Ciudad" ref={ciudadSignUpRef} />
               <input
@@ -226,7 +262,9 @@ export default function Login() {
                 placeholder="Contraseña"
                 ref={passwordSignUpRef}
               />
-
+              {passwordError && (
+                <p className="error-message">{passwordError}</p>
+              )}
               <button onClick={(event) => handleRegistration(event)}>
                 Registrarse
               </button>
@@ -237,7 +275,6 @@ export default function Login() {
           <form>
             <h2>Iniciar Sesión</h2>
 
-            <span>o usa tu cuenta</span>
             <input
               type="text"
               placeholder="Correo electrónico"
@@ -247,8 +284,11 @@ export default function Login() {
               type="password"
               placeholder="Contraseña"
               ref={passwordSignInRef}
-            />
+              />
 
+              {loginError && 
+                  <p className="error-message">{loginError}</p>
+                }
             <a href="#">¿Olvidaste tu contraseña?</a>
             <button onClick={(event) => handleSignIn(event)}>
               Iniciar Sesión

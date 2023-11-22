@@ -1,17 +1,18 @@
 "use client";
 
 import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/navigation";
+import { FaEnvelope } from "react-icons/fa6";
+import { AuthContext } from "@/context";
 
 
 import "./styles.css";
 
-import { AuthContext } from "@/context";
 import Sidebar from "@/components/sidebar/Sidebar";
 import TopBar from "@/components/topBar/TopBar";
 import BottomBar from "@/components/bottomBar/BottomBar";
 import PostSection from "@/components/postCardSection/PostCardSection";
 import PostCardFeature from "@/components/CardFeatures/CardFeature";
-import { FaEnvelope } from "react-icons/fa6";
 
 const samplePosts = [
   {
@@ -42,7 +43,18 @@ const samplePosts = [
 ];
 
 const Home = () => {
+  const context = useContext(AuthContext);
+  const router = useRouter();
+
   const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    // Verifica si el usuario no está autenticado (logged es falso)
+    if (!context.userData.logged) {
+      // Redirige al usuario a la página de inicio de sesión
+      router.push('/login'); // Ajusta la ruta según la configuración de tu aplicación
+    }
+  }, [context.userData.logged, router]);
 
   useEffect(() => {
     // Función asincrónica para cargar datos

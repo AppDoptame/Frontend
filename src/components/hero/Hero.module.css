@@ -48,13 +48,6 @@
 }
 
 .heroDescription {
-  color: var(--blue);
   text-align: center;
-  
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 34px;
-
   margin: 34px 0px;
 }

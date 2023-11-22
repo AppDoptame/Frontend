@@ -10,7 +10,7 @@ const Card: FC<CardProps> = ({ imgSrc, cardTitle, buttonDescription, imagePositi
     <div className={styles.card}>
       <div className={styles.cardContent}>
         <div className={`${imagePosition === "left" ? styles.imageLeft : styles.imageRight}`}>
-          <Image src={imgSrc} alt='Card Decorative Image' width={300} height={200} />
+          <Image src={imgSrc} alt='Card Decorative Image' width={320} height={200} />
         </div>
         <div className={styles.cardText}>
           <h2 className={styles.cardTitle}>{cardTitle}</h2>

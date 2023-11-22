@@ -29,51 +29,27 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({}) => {
       <div className="">
         <div className="">
           <div className="">
-            <h4 className="">Personal Info</h4>
+            <h4 className="">Información personal</h4>
             <ul className="">
               <li className="">
-                <span className="">Full name:</span>
-                <span className="">Amanda S. Ross</span>
+                <span className="">Nombre:</span>
+                <span className="">{context.userData.nombre}</span>
               </li>
               <li className="">
-                <span className="">Birthday:</span>
-                <span className="">24 Jul, 1991</span>
+                <span className="">Fecha de nacimiento:</span>
+                <span className="">{context.userData.fecha_nacimiento}</span>
               </li>
               <li className="">
-                <span className="">Joined:</span>
-                <span className="">10 Jan 2022 (25 days ago)</span>
+                <span className="">Celular:</span>
+                <span className="">{context.userData.celular}</span>
               </li>
               <li className="">
-                <span className="">Mobile:</span>
-                <span className="">(123) 123-1234</span>
-              </li>
-              <li className="">
-                <span className="">Email:</span>
+                <span className="">Correo electrónico:</span>
                 <span className="">{context.userData.email}</span>
               </li>
               <li className="">
-                <span className="">Location:</span>
-                <span className="">New York, US</span>
-              </li>
-              <li className="">
-                <span className="">Languages:</span>
-                <span className="">English, Spanish</span>
-              </li>
-              <li className="">
-                <span className="">Elsewhere:</span>
-                {/* Social icons go here */}
-                <a href="#" title="Facebook">
-                  {/* Facebook SVG icon */}
-                </a>
-                <a href="#" title="Twitter">
-                  {/* Twitter SVG icon */}
-                </a>
-                <a href="#" title="LinkedIn">
-                  {/* LinkedIn SVG icon */}
-                </a>
-                <a href="#" title="Github">
-                  {/* Github SVG icon */}
-                </a>
+                <span className="">Ubicacion:</span>
+                <span className="">{context.userData.ciudad}, {context.userData.departamento}</span>
               </li>
             </ul>
           </div>
