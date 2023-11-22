@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import "./styles.css";
 
@@ -9,13 +9,15 @@ import { AuthContext } from "@/context";
 
 export default function Login() {
   const context = useContext(AuthContext);
-  console.log(context.userData);
+  console.log(context.userData)
+
   const signUpButtonRef = useRef<HTMLButtonElement | null>(null);
   const signInButtonRef = useRef<HTMLButtonElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isSignUp, setIsSignUp] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [loginError, setLoginError] = useState("");
 
   const router = useRouter();
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -33,6 +35,14 @@ export default function Login() {
 
   const confirmationCodeRef = useRef<HTMLInputElement>(null);
   const [registrationEmail, setRegistrationEmail] = useState("");
+
+  useEffect(() => {
+    // Verifica si el usuario no está autenticado (logged es falso)
+    if (context.userData.logged) {
+      // Redirige al usuario a la página de inicio de sesión
+      router.push('/home'); // Ajusta la ruta según la configuración de tu aplicación
+    }
+  }, [context.userData.logged, router]);
 
   const handleSignUpClick = () => {
     containerRef?.current?.classList.add("right-panel-active");
@@ -69,11 +79,19 @@ export default function Login() {
 
       const data = await response.json();
       if (response.ok) {
+        setLoginError("")
         console.log("logged in successfully");
         context.userData.email = email;
         context.userData.logged = true;
+        context.userData.access_token = data.access_token;
+        context.userData.refresh_token = data.refresh_token;
+        console.log(context.userData)
         router.push("/home");
-      } else {
+      }else if (response.status === 400) {
+        // Manejar el error 400 (Bad Request)
+        setLoginError("El correo o la contraseña son invalidos")
+        console.log(loginError)
+      }  else {
         console.error(data);
       }
     } catch (error) {
@@ -139,6 +157,7 @@ export default function Login() {
 
       const data = await response.json();
       if (response.ok) {
+        
         console.log(data);
         setShowConfirmation(true);
       } else {
@@ -181,7 +200,7 @@ export default function Login() {
         setShowConfirmation(false);
         console.log(data);
         console.log("confirmed");
-      } else {
+      }else {
         console.error(data);
       }
     } catch (error) {
@@ -259,8 +278,11 @@ export default function Login() {
               type="password"
               placeholder="Contraseña"
               ref={passwordSignInRef}
-            />
+              />
 
+              {loginError && 
+                  <p className="error-message">{loginError}</p>
+                }
             <a href="#">¿Olvidaste tu contraseña?</a>
             <button onClick={(event) => handleSignIn(event)}>
               Iniciar Sesión
