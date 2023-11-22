@@ -9,7 +9,7 @@ import { AuthContext } from "@/context";
 
 export default function Login() {
   const context = useContext(AuthContext);
-  console.log(context.userData)
+  // console.log(context.userData)
 
   const signUpButtonRef = useRef<HTMLButtonElement | null>(null);
   const signInButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -85,6 +85,12 @@ export default function Login() {
         context.userData.logged = true;
         context.userData.access_token = data.access_token;
         context.userData.refresh_token = data.refresh_token;
+        context.userData.nombre = data.nombre;
+        context.userData.fecha_nacimiento = data.fecha_nacimiento;
+        context.userData.ciudad = data.ciudad;
+        context.userData.departamento = data.departamento;
+        context.userData.celular = data.celular;
+
         console.log(context.userData)
         router.push("/home");
       }else if (response.status === 400) {

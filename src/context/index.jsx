@@ -1,33 +1,36 @@
 'use client'
+// you can remove it if it's not needed
 
 import { createContext, useState, useEffect } from 'react';
 
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 
-const AuthProvider = ({children}) => {
-  console.log(localStorage.getItem('userData'))
+const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(() => {
-    // Intenta cargar los datos del localStorage al inicio
-    const storedData = localStorage.getItem('userData');
-    console.log("data almacenada" + storedData)
-    return storedData ? JSON.parse(storedData) : { logged: false };
+    // Check if localStorage is available before using it
+    if (typeof localStorage !== 'undefined') {
+      const storedData = localStorage.getItem('userData');
+      return storedData ? JSON.parse(storedData) : { logged: false };
+    } else {
+      return { logged: false };
+    }
   });
 
   useEffect(() => {
-    // Almacena los datos en el localStorage cada vez que userData cambia
-    console.log(localStorage.getItem('userData'))
-    localStorage.setItem('userData', JSON.stringify(userData));
+    // Check if localStorage is available before using it
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('userData', JSON.stringify(userData));
+    }
   }, [userData]);
 
   return (
     <AuthContext.Provider value={{
       userData,
-      setUserData
+      setUserData,
     }}>
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
-
-export default AuthProvider
+export default AuthProvider;
