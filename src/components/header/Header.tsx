@@ -30,7 +30,7 @@ const Header: React.FC = () => {
           <Link href="/soporte">Soporte</Link>
         </nav>
         <button className={styles.headerLogin} onClick={() => NavigateLogin()}>
-          INGRESAR
+          Ingresar
         </button>
       </div>
     </header>

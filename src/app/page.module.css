@@ -1,5 +1,5 @@
 .textCard {
-  padding: 50px 100px;
+  padding: 50px;
 }
 
 .textCardTitle {
@@ -9,13 +9,11 @@
   font-style: normal;
   line-height: 86px;
   letter-spacing: -4px;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 }
 
 .textCardDescription {
-  color: var(--blue);
   text-align: justify;
-  font-style: normal;
   line-height: 26px;
   margin: auto;
   max-width: 130rem;

@@ -8,13 +8,15 @@ import "./styles.css";
 import { AuthContext } from "@/context";
 
 export default function Login() {
-
   const context = useContext(AuthContext);
   console.log(context.userData);
   const signUpButtonRef = useRef<HTMLButtonElement | null>(null);
   const signInButtonRef = useRef<HTMLButtonElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
+
   const router = useRouter();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -68,8 +70,8 @@ export default function Login() {
       const data = await response.json();
       if (response.ok) {
         console.log("logged in successfully");
-        context.userData.email= email
-        context.userData.logged= true;
+        context.userData.email = email;
+        context.userData.logged = true;
         router.push("/home");
       } else {
         console.error(data);
@@ -90,6 +92,25 @@ export default function Login() {
     const ciudad = ciudadSignUpRef.current?.value || "";
     const departamento = departamentoSignUpRef.current?.value || "";
     const fechaNacimiento = fechaNacimientoSignUpRef.current?.value || "";
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Por favor, ingresa un correo electrónico válido.");
+      return;
+    } else {
+      setEmailError("");
+    }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(.{6,})$/;
+
+    if (!passwordRegex.test(password)) {
+      setPasswordError(
+        "La contraseña debe contener al menos una mayúscula, un carácter especial y tener una longitud mínima de 6 caracteres."
+      );
+      return;
+    } else {
+      setPasswordError("");
+    }
 
     const payload = {
       nombre: name,
@@ -190,24 +211,14 @@ export default function Login() {
           ) : (
             <form>
               <h2>Crear Cuenta</h2>
-              {/* <div className="social-container">
-                <a href="#" className="social">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" className="social">
-                  <i className="fab fa-google-plus-g"></i>
-                </a>
-                <a href="#" className="social">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-              </div> */}
-              <span>o usa tu correo electrónico para registrarte</span>
+
               <input type="text" placeholder="Nombre" ref={nameSignUpRef} />
               <input
                 type="text"
                 placeholder="Correo electrónico"
                 ref={emailSignUpRef}
               />
+              {emailError && <p className="error-message">{emailError}</p>}
               <input type="text" placeholder="Celular" ref={celularSignUpRef} />
               <input type="text" placeholder="Ciudad" ref={ciudadSignUpRef} />
               <input
@@ -226,7 +237,9 @@ export default function Login() {
                 placeholder="Contraseña"
                 ref={passwordSignUpRef}
               />
-
+              {passwordError && (
+                <p className="error-message">{passwordError}</p>
+              )}
               <button onClick={(event) => handleRegistration(event)}>
                 Registrarse
               </button>
@@ -237,7 +250,6 @@ export default function Login() {
           <form>
             <h2>Iniciar Sesión</h2>
 
-            <span>o usa tu cuenta</span>
             <input
               type="text"
               placeholder="Correo electrónico"

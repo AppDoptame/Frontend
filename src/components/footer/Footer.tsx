@@ -18,18 +18,15 @@ const Footer: React.FC = () => {
             alt=""
           />
         </Link>
-        <nav className={styles.navBar}>
+        {/* <nav className={styles.navBar}>
           <Link href="/contacto">Contáctenos</Link>
           <Link href="/preguntas-frecuentes">FAQ</Link>
           <Link href="/precios">Precios</Link>
           <Link href="/soporte">Soporte</Link>
-        </nav>
-        <Link className={styles.footerLogin} href="/login">
-          INGRESAR
-        </Link>
+        </nav> */}
       </div>
       <div className={styles.footerCopyright + " " + poppins.className}>
-        © Copyright 2022, All Rights Reserved by Repon
+        © Copyright 2022, All Rights Reserved by AppDoptame
       </div>
     </div>
   );

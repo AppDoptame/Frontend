@@ -269,3 +269,9 @@ input {
     animation: show 0.6s;
   }
 }
+
+.error-message{
+  color: var(--red);
+  margin: 1px 0;
+  font-size: 1rem;
+}

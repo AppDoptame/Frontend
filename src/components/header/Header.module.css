@@ -57,8 +57,16 @@
   text-transform: uppercase;
 }
 
+.headerLogo img{
+  object-fit: contain; /* Puedes usar 'cover' si prefieres cubrir completamente el contenedor */
+  width: 100%;
+  height: 100%;
+}
 .headerLogo {
-  width: 144px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logoCard {
