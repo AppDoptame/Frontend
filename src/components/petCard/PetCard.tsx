@@ -29,8 +29,8 @@ const PetCard: React.FC<PetCardProps> = ({
   email,
 }) => {
   return (
-    <div className="postCardContainer">
-      <div className="postCardImage">
+    <div className="petCardContainer">
+      <div className="petCardImage">
         <img
           src={images}
           alt={name}
@@ -39,30 +39,30 @@ const PetCard: React.FC<PetCardProps> = ({
           // objectFit="cover"
         />
       </div>
-      <div className="postCardContent">
-        <h3 className="postCardTitle">{name}</h3>
-        <p className="postCardDescription">Vacunas: {vaccines}</p>
-        <p className="postCardDescription">Raza: {race}</p>
-        <p className="postCardDescription">Edad: {age} años</p>
-        <p className="postCardDescription">Sexo: {sex}</p>
-        <p className="postCardDescription">
+      <div className="petCardContent">
+        <h3 className="petCardTitle">{name}</h3>
+        <p className="petCardDescription">Vacunas: {vaccines}</p>
+        <p className="petCardDescription">Raza: {race}</p>
+        <p className="petCardDescription">Edad: {age} años</p>
+        <p className="petCardDescription">Sexo: {sex}</p>
+        <p className="petCardDescription">
           {city}, {department}
         </p>
-        <p className="postCardDescription">{sterilized}</p>
+        <p className="petCardDescription">{sterilized}</p>
         {sterilized ? (
-        <p className="postCardDescription">Esterilizado</p>
+          <p className="petCardDescription">Esterilizado</p>
         ) : (
-          <p className="postCardDescription">Sin Esterilizar</p>
+          <p className="petCardDescription">Sin Esterilizar</p>
         )}
         {adopted ? (
           <div>
-            <p className="postCardDescription">No adoptado</p>
-            <button>¡Adoptame!</button>
+            <p className="petCardDescription">No adoptado</p>
+            <button className="button1">¡Adoptame!</button>
           </div>
         ) : (
-          <p className="postCardDescription">Adoptado</p>
+          <p className="petCardDescription">Adoptado</p>
         )}
-        <p className="postCardDescription">{email}</p>
+        <p className="petCardDescription">{email}</p>
       </div>
     </div>
   );
