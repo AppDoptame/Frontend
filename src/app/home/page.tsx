@@ -13,6 +13,8 @@ import TopBar from "@/components/topBar/TopBar";
 import BottomBar from "@/components/bottomBar/BottomBar";
 import PostSection from "@/components/postCardSection/PostCardSection";
 import PostCardFeature from "@/components/CardFeatures/CardFeature";
+import { setSessionData } from '@/context/session'
+import { getSessionData } from '@/context/session'
 
 const samplePosts = [
   {
@@ -45,7 +47,8 @@ const samplePosts = [
 const Home = () => {
   const context = useContext(AuthContext);
   const router = useRouter();
-
+  // const [userData, setUserData] = useState(getSessionData("userData") || { logged: false })
+  
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {

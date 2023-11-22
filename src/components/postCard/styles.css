@@ -5,7 +5,7 @@
   width: 100%;
   max-width: 300px;
   margin: 1rem auto;
-  height: 350px;
+  /* height: 350px; */
   background-color: #fff;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   display: flex;
@@ -21,6 +21,7 @@
   z-index: 10;
   max-width: 40%;
   min-height: 600px;
+  max-height: 95vh;
   width: auto;
   height: auto;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
@@ -67,7 +68,7 @@
 }
 
 .postCardContainer.expanded .postCardImage img {
-  min-height: 600px;
+  min-height: 500px;
 }
 
 .postCardContainer.expanded .postCardContent {
@@ -91,4 +92,25 @@
   .postCardDescription {
     font-size: 12px;
   }
+}
+
+
+.button1 {
+  padding: 8px 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.button1:hover {
+  background-color: #2980b9;
+}
+
+.button1:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
 }

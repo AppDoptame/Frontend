@@ -6,9 +6,12 @@ import { useRouter } from "next/navigation";
 import "./styles.css";
 
 import { AuthContext } from "@/context";
+import { setSessionData } from '@/context/session'
+import { getSessionData } from '@/context/session'
 
 export default function Login() {
   const context = useContext(AuthContext);
+  const [userData, setUserData] = useState(getSessionData("userData") || { logged: false })
   // console.log(context.userData)
 
   const signUpButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -38,11 +41,11 @@ export default function Login() {
 
   useEffect(() => {
     // Verifica si el usuario no está autenticado (logged es falso)
-    if (context.userData.logged) {
+    if (userData.logged) {
       // Redirige al usuario a la página de inicio de sesión
       router.push('/home'); // Ajusta la ruta según la configuración de tu aplicación
     }
-  }, [context.userData.logged, router]);
+  }, [userData.logged, router]);
 
   const handleSignUpClick = () => {
     containerRef?.current?.classList.add("right-panel-active");
@@ -81,17 +84,21 @@ export default function Login() {
       if (response.ok) {
         setLoginError("")
         console.log("logged in successfully");
-        context.userData.email = email;
-        context.userData.logged = true;
-        context.userData.access_token = data.access_token;
-        context.userData.refresh_token = data.refresh_token;
-        context.userData.nombre = data.nombre;
-        context.userData.fecha_nacimiento = data.fecha_nacimiento;
-        context.userData.ciudad = data.ciudad;
-        context.userData.departamento = data.departamento;
-        context.userData.celular = data.celular;
+        const newUserData = {
+          email: email,
+          logged: true,
+          access_token: data.access_token,
+          refresh_token: data.refresh_token,
+          nombre: data.nombre,
+          fecha_nacimiento: data.fecha_nacimiento,
+          ciudad: data.ciudad,
+          departamento: data.departamento,
+          celular: data.celular,
+        };
+        setUserData(newUserData);
 
-        console.log(context.userData)
+        console.log(newUserData)
+        setSessionData('userData', newUserData);
         router.push("/home");
       }else if (response.status === 400) {
         // Manejar el error 400 (Bad Request)
