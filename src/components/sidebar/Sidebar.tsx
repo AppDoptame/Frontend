@@ -10,11 +10,14 @@ import {
   FaGear,
   FaBars,
   FaPlus,
+  FaRocketchat,
 } from "react-icons/fa6";
 import Link from "next/link";
+import ChatComponent from "../chat/Chat";
 
 const Sidebar = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showChat, setShowChat] = useState(false);
   const [modalType, setModalType] = useState("");
   const [formData, setFormData] = useState<{
     email: string;
@@ -71,6 +74,10 @@ const Sidebar = () => {
     }
   };
 
+  const openChat = () => {
+    setShowChat(true);
+  };
+
   return (
     <>
       <div className={`sidebar-container`}>
@@ -88,23 +95,26 @@ const Sidebar = () => {
         <>
           <div className="sidebar-ul-container">
             <Link href="/home">
-              <FaHouse style={{ fontSize: '3rem', color: "var(--orange)" }}/>
+              <FaHouse style={{ fontSize: "3rem", color: "var(--orange)" }} />
               <span>Home</span>
             </Link>
             <Link href="/pets">
-              <FaDog style={{ fontSize: '3rem', color: "var(--orange)" }}/>
+              <FaDog style={{ fontSize: "3rem", color: "var(--orange)" }} />
               <span>Pets</span>
             </Link>
-            <button className="" onClick={() => openModal("pet")}>
-              <FaPlus style={{ fontSize: '3rem', color: "var(--orange)" }}/>
+            <button className="add-pet-btn" onClick={() => openModal("pet")}>
+              <FaPlus style={{ fontSize: "3rem", color: "var(--orange)" }} />
               <span>Add Pet</span>
             </button>
-            <Link href="/home">
-              <FaMagnifyingGlass style={{ fontSize: '3rem', color: "var(--orange)" }}/>
-              <span>Search</span>
-            </Link>
+            <button className="chatbot-btn" onClick={() => openChat()}>
+              <FaRocketchat
+                style={{ fontSize: "3rem", color: "var(--orange)" }}
+              />
+              <span>ChatBot</span>
+            </button>
+
             <Link href="/profile">
-              <FaUser style={{ fontSize: '3rem', color: "var(--orange)" }}/>
+              <FaUser style={{ fontSize: "3rem", color: "var(--orange)" }} />
               <span>Profile</span>
             </Link>
           </div>
@@ -115,6 +125,8 @@ const Sidebar = () => {
           </div>
         </>
       </div>
+      <ChatComponent showChat={showChat} closeChat={() => setShowChat(false)} />
+
       {showModal && (
         <>
           <div className="modal-overlay" onClick={closeModal}></div>

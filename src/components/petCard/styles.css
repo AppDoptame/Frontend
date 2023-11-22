@@ -1,64 +1,86 @@
-.postCardContainer {
+.petCardContainer {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(48, 47, 47, 0.1);
-  width: max-content;
-  cursor: pointer;
-  background-color: #fff;
   width: 80%;
   display: flex;
+  flex-direction: row;
+  max-height: 300px;
   margin: 2rem auto;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.postCardContainer:hover {
+.petCardContainer:hover {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   transform: translateY(-5px);
 }
 
-.postCardImage img {
-  width: 310px;
-  height: 380px;
-  display: block;
-  object-fit: cover; /* Esto mantiene la proporción de aspecto y cubre el cuadro sin distorsión */
+.petCardImage img {
+  width: 300px;
+  height: 100%;
+  object-fit: cover;
 }
 
-.postCardContent {
-  padding: 20px;
+.petCardContent {
+  padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.postCardTitle {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #333;
-}
-
-.postCardDescription {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.5;
-  max-height: 12rem;
+.petCardTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #2c3e50;
   overflow: hidden;
   text-overflow: ellipsis;
-
+  white-space: nowrap;
 }
 
-/* @media (min-width: 769px) {
-  .postCardContainer {
-    width: 340px;
-  }
-} */
+.petCardDescription {
+  font-size: 14px;
+  color: #34495e;
+  line-height: 1.4;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.button1 {
+  padding: 8px 12px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button1:hover {
+  background-color: #2980b9;
+}
+
+.button1:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
 
 @media (max-width: 480px) {
-  .postCardContent {
+  .petCardContent {
     padding: 15px;
   }
 
-  .postCardTitle {
+  .petCardTitle {
     font-size: 18px;
   }
 
-  .postCardDescription {
+  .petCardDescription {
     font-size: 14px;
   }
 }

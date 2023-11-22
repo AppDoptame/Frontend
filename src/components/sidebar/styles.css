@@ -12,7 +12,6 @@
 
 .image-container {
   width: 200px;
-  /* height: 55px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +19,7 @@
 }
 
 .image-container img {
-  object-fit: contain; /* Puedes usar 'cover' si prefieres cubrir completamente el contenedor */
+  object-fit: contain;
   width: 100%;
   height: 100%;
 }
@@ -43,6 +42,8 @@
   width: 100%;
   transition: background-color 0.3s;
   font-weight: 500;
+  text-decoration: none;
+  color: #333;
 }
 
 .sidebar-ul-container button {
@@ -52,8 +53,9 @@
 }
 
 .sidebar-ul-container a span,
-.sidebar-ul-container button span{
+.sidebar-ul-container button span {
   padding: 0 0 0 1.6rem;
+  font-size: 1.5rem;
 }
 
 a:hover,
@@ -177,7 +179,6 @@ button:hover {
   font-size: 14px;
 }
 
-/* Styles for the form's submit button */
 .submit-button {
   padding: 10px 20px;
   background-color: var(--blue);
@@ -192,7 +193,6 @@ button:hover {
   background-color: darken(var(--blue), 10%);
 }
 
-/* Styles for the modal's close button */
 .close-button {
   position: absolute;
   top: 10px;
@@ -210,4 +210,13 @@ button:hover {
 
 .close-button:hover {
   background-color: #d32f2f;
+}
+
+.sidebar-ul-container button.add-pet-btn,
+.sidebar-ul-container button.chatbot-btn {
+}
+
+.sidebar-ul-container button.add-pet-btn:hover,
+.sidebar-ul-container button.chatbot-btn:hover {
+  background-color: #e0e0e0;
 }

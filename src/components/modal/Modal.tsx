@@ -210,9 +210,18 @@ const ModalComponent: React.FC<ModalProps> = ({
         <>
           <div className="modal-overlay" onClick={closeModal}></div>
           <div className="modal">
-            <button className="close-button" onClick={closeModal}>
-              Close
-            </button>
+            <div
+              style={{
+                display: "flex",
+                height: "20px",
+                top: "-8px",
+                position: "relative",
+              }}
+            >
+              <button className="close-button" onClick={closeModal}>
+                Close
+              </button>
+            </div>
             {modalType === "pet" ? (
               <form onSubmit={handleSubmit}>
                 <label>
