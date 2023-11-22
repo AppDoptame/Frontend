@@ -30,6 +30,7 @@ const PostCard: React.FC<PostCardProps> = ({ title, description, images }) => {
       <div className="postCardContent">
         <h3 className="postCardTitle">{title}</h3>
         <p className="postCardDescription">{description}</p>
+        <button className="button1">¡Adoptame!</button>
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import React, { ReactNode, useState } from "react";
-import "./styles.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import "./styles.css";
 import {
   FaHouse,
   FaUser,
@@ -14,8 +16,12 @@ import {
 } from "react-icons/fa6";
 import Link from "next/link";
 import ChatComponent from "../chat/Chat";
+import { removeSessionData } from '@/context/session'
+
 
 const Sidebar = () => {
+  const router = useRouter();
+
   const [showModal, setShowModal] = useState(false);
   const [showChat, setShowChat] = useState(false);
   const [modalType, setModalType] = useState("");
@@ -78,6 +84,12 @@ const Sidebar = () => {
     setShowChat(true);
   };
 
+
+  const handleLogOut = () => {
+    // Agrega la lógica que deseas ejecutar al hacer clic en el icono de RightBracket
+    removeSessionData('userData')
+    router.push('/');
+  };
   return (
     <>
       <div className={`sidebar-container`}>
@@ -120,7 +132,7 @@ const Sidebar = () => {
           </div>
 
           <div className="bottom-icons">
-            <FaRightFromBracket size={24} />
+            <FaRightFromBracket size={24} onClick={handleLogOut}/>
             <FaGear size={24} />
           </div>
         </>

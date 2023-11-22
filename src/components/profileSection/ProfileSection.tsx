@@ -4,6 +4,8 @@ import { AuthContext } from "@/context";
 import "./styles.css";
 import Image from "next/image";
 
+import user from "../../../public/user.svg";
+
 type ProfileSectionProps = {};
 
 const ProfileSection: React.FC<ProfileSectionProps> = ({}) => {
@@ -12,50 +14,36 @@ const ProfileSection: React.FC<ProfileSectionProps> = ({}) => {
   const [openSettings, setOpenSettings] = useState(false);
 
   return (
-    <div className="">
-      <div className="">
-        <div className="">
-        </div>
+    <section style={{margin: "20px 50px"}}>
         <div className="">
           <Image
-            src="https://vojislavd.com/ta-template-demo/assets/img/profile.jpg"
+            src={user}
             alt="Profile"
             width={150}
             height={150}
           />
-        </div>
       </div>
 
       <div className="">
-        <div className="">
-          <div className="">
-            <h4 className="">Información personal</h4>
-            <ul className="">
-              <li className="">
-                <span className="">Nombre:</span>
-                <span className="">{context.userData.nombre}</span>
-              </li>
-              <li className="">
-                <span className="">Fecha de nacimiento:</span>
-                <span className="">{context.userData.fecha_nacimiento}</span>
-              </li>
-              <li className="">
-                <span className="">Celular:</span>
-                <span className="">{context.userData.celular}</span>
-              </li>
-              <li className="">
-                <span className="">Correo electrónico:</span>
-                <span className="">{context.userData.email}</span>
-              </li>
-              <li className="">
-                <span className="">Ubicacion:</span>
-                <span className="">{context.userData.ciudad}, {context.userData.departamento}</span>
-              </li>
-            </ul>
+            <h3 className="" style={{margin: "10px 0", color: "var(--orange)"}}>Información personal</h3>
+
+              <div className="" style={{margin: "10px 0"}}>
+                <p className="">Nombre: {context.userData.nombre}</p>
+              </div>
+              <div className="" style={{margin: "10px 0"}}>
+                <p className="">Fecha de nacimiento: {context.userData.fecha_nacimiento}</p>
+              </div>
+              <div className="" style={{margin: "10px 0"}}>
+                <p className="">Celular: {context.userData.celular}</p>
+              </div>
+              <div className="" style={{margin: "10px 0"}}>
+                <p className="">Correo electrónico: {context.userData.email}</p>
+              </div>
+              <div className="" style={{margin: "10px 0"}}>
+                <p className="">Ubicacion: {context.userData.ciudad}, {context.userData.departamento}</p>
+              </div>
           </div>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 
